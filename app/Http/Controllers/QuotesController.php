@@ -35,16 +35,19 @@ class QuotesController extends Controller
 
     public function edit($id)
     {
-        //
+        $quotes = Quote::find($id);
+        return view('admin.quotes.edit',['quotes' => $quotes]);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $quotes = Quote::find($id);
+        return redirect()->route('quotes.index')->with('Actualizado Correctamente');
     }
 
     public function destroy($id)
     {
-        //
+        $quotes = Quote::find($id)->delete();
+        return redirect()->route('quotes.index')->with('Eliminado correctamente');
     }
 }

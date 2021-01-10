@@ -25,7 +25,13 @@ class EvaluatorsController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $evaluators = new Evaluator();
+        $evaluators->name_evaluators     = request('name_evaluators');
+        $evaluators->lastname_evaluators = request('lastname_evaluators');
+        $evaluators->address             = request('address');
+        $evaluators->extension           = request('extension');
+        $evaluators->save();
+        return redirect()->route('evaluators.index')->withSuccess('Evaluador creado con exito');
     }
 
     public function show($id)
@@ -35,16 +41,32 @@ class EvaluatorsController extends Controller
 
     public function edit($id)
     {
-        //
+        $evaluators = Evaluator::find($id);
+        return view('admin.evaluators.edit',['evaluators' => $evaluators]);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $this->validate(request(),
+        ['name_evaluators'     => ['required','max:80']],
+        ['lastname_evaluators' => ['required','max:80']],
+        ['address'             => ['required','max:80']],
+        ['extension'           => ['required']
+        ]);
+
+        $evaluators = Evaluator::find($id);
+        $evaluators->name_evaluators     = $request->get('name_evaluators');
+        $evaluators->lastname_evaluators = $request->get('lastname_evaluators');
+        $evaluators->address             = $request->get('address');
+        $evaluators->extension           = $request->get('extension');
+        $evaluators->update();
+
+        return redirect()->route('evaluators.index')->with('Actualizado correctamente');
     }
 
     public function destroy($id)
     {
-        //
+        $evaluators = Evaluator::findOrFail($id)->delete();
+        return redirect()->route('evaluators.index')->withToastError('Eliminado correctamente');
     }
 }

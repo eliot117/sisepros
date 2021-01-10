@@ -15,7 +15,7 @@ class RolesController extends Controller
     public function index()
     {
         $roles= Role::all();
-        return view('admin.roles.index',['roles'=>$roles]);
+        return view('admin.roles.index',['roles'=> $roles]);
     }
 
     public function create()
