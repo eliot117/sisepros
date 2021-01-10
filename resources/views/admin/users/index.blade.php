@@ -39,8 +39,20 @@ Lista de Usuarios Registrados
                                 {{ $role->name }}
                             @endforeach
                         </td>
-                        <td>Editar</td>
-                        <td>Borrar</td>
+                        <td><a href="{{ route('users.edit', $user->id) }}">
+                            <button class="btn btn-primary btn-sm">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                        </a></td>
+                        <td>
+                            <form method="POST" action="{{ route('users.destroy', $user->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btn-sm" type="submit">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -66,5 +78,4 @@ Lista de Usuarios Registrados
       <!-- /.row -->
     </div>
     <!-- /.container-fluid -->
-  </section>
 @endsection

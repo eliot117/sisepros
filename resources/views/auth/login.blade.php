@@ -8,9 +8,6 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Sistema de Solicitud de Examen Psicométrico</title>
   <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
-  <!-- Tell the browser to be responsive to screen width -->
-
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->

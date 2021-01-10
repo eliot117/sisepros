@@ -204,12 +204,12 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-lock"></i>
               <p>
-                Roles & Permisos<i class="right fas fa-angle-left"></i>
+                Roles<i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('roles.index') }}" class="nav-link">
                   <i class="fas fa-lock"></i>
                   <p>Roles</p>
                 </a>
@@ -289,7 +289,9 @@
 
     <!-- Main content -->
     <div class="content">
-      @yield('content')
+     <section>
+        @yield('content')
+     </section>
     </div>
     <!-- /.content -->
   </div>
